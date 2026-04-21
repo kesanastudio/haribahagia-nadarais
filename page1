@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wedding Nada & Rais</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  overflow-x: hidden;
+}
+
+/* SECTION */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* BACKGROUND */
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
+
+/* TITLE */
+.title {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  opacity: 0;
+  transition: 1.5s ease;
+}
+
+.title.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* COUPLE */
+.couple {
+  position: absolute;
+  bottom: 18%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  opacity: 0;
+  transition: 1.5s ease;
+  width: 320px;
+}
+
+.couple.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* GRASS */
+.grass {
+  position: absolute;
+  bottom: -40px;
+  width: 100%;
+  opacity: 0;
+  transition: 1.5s ease;
+}
+
+.grass.show {
+  bottom: 0;
+  opacity: 1;
+}
+
+/* AYAT */
+.ayat {
+  position: absolute;
+  bottom: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  text-align: center;
+  color: #8b2c4a;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* TYPEWRITER */
+.cursor {
+  display: inline-block;
+  width: 2px;
+  background: #8b2c4a;
+  margin-left: 4px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+  <!-- Background -->
+  <img src="backrgroundawan.png" class="bg">
+
+  <!-- Title -->
+  <img src="theweddingnadarais.png" class="title" id="title">
+
+  <!-- Couple -->
+  <img src="nadaraisround.png" class="couple" id="couple">
+
+  <!-- Grass -->
+  <img src="rumputbawah.png" class="grass" id="grass">
+
+  <!-- Ayat -->
+  <div class="ayat">
+    <span id="text"></span><span class="cursor"></span>
+  </div>
+
+</section>
+
+<script>
+/* ANIMATION SEQUENCE */
+setTimeout(() => {
+  document.getElementById("title").classList.add("show");
+}, 300);
+
+setTimeout(() => {
+  document.getElementById("couple").classList.add("show");
+}, 800);
+
+setTimeout(() => {
+  document.getElementById("grass").classList.add("show");
+}, 1200);
+
+setTimeout(() => {
+  startTyping();
+}, 1800);
+
+
+/* TYPEWRITER */
+const text = `Di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir.
+
+QS: Ar-Rum 21`;
+
+let i = 0;
+function startTyping() {
+  const speed = 22; // makin kecil makin cepat
+
+  function type() {
+    if (i < text.length) {
+      document.getElementById("text").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+
+  type();
+}
+</script>
+
+</body>
+</html>
